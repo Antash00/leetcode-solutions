@@ -7,7 +7,6 @@ var debounce = function(fn, t) {
     let ref = null
     return function(...args) {
         clearTimeout(ref)
-        ref = null
         ref = setTimeout(() => {
         fn(...args)
       },t)
