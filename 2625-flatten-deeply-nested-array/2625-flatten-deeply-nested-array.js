@@ -4,19 +4,17 @@
  * @return {Array}
  */
 var flat = function (arr, n) {
-    if (n === 0) {
-        return arr
-    }
-    const flatArray = (arr, curDepth) => {
-        let flatArrayResult = []
-        for (let el of arr) {
+    if (n === 0) return arr
+    const result = []
+    const flatArray = (array, curDepth) => {
+        for (let el of array) {
             if (!Array.isArray(el) || curDepth >= n) {
-                flatArrayResult.push(el)
+                result.push(el)
             } else {
-                flatArrayResult.push(...flatArray(el, curDepth + 1))
+                flatArray(el, curDepth + 1)
             }
         }
-        return flatArrayResult
     }
-    return flatArray(arr, 0, n)
+    flatArray(arr, 0)
+    return result
 }
