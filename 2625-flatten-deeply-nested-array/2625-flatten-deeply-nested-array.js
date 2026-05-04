@@ -7,7 +7,7 @@ var flat = function (arr, n) {
     if (n === 0) {
         return arr
     }
-    const flatArray = function (arr, curDepth) {
+    const flatArray = (arr, curDepth) => {
         let flatArrayResult = []
         for (let el of arr) {
             if (!Array.isArray(el) || curDepth >= n) {
