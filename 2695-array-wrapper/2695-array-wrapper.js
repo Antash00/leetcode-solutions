@@ -4,14 +4,13 @@
  */
 var ArrayWrapper = function (nums) {
     this.nums = nums;
-    this.sum = nums.reduce((acc, curr) => acc + curr, 0);
 };
 
 /**
  * @return {number}
  */
 ArrayWrapper.prototype.valueOf = function () {
-    return this.sum;
+    return this.nums.reduce((acc, curr) => acc + curr, 0);
 }
 
 /**
