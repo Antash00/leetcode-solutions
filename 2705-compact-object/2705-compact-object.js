@@ -3,23 +3,27 @@
  * @return {Object|Array}
  */
 var compactObject = function (obj) {
-    const result = obj
-    if (Array.isArray(result)) {
-        for (let i = result.length - 1; i >= 0; i--) {
-            if (!result[i]) {
-                result.splice(i, 1)
-            } else if (Array.isArray(result[i]) || typeof result[i] === 'object') {
-                result[i] = compactObject(result[i])
+    if (Array.isArray(obj)) {
+        let result = [];
+        for (let item of obj) {
+            if (Boolean(item)) {
+                if (typeof item === "object") {
+                    result.push(compactObject(item));
+                } else {
+                    result.push(item);
+                }
             }
         }
-    } else if (typeof result === 'object') {
-        for (let key in result) {
-            if (!result[key]) {
-                delete result[key]
-            } else if (Array.isArray(result[key]) || typeof result[key] === 'object') {
-                result[key] = compactObject(result[key])
+        return result;
+    } else {
+        for (let key in obj) {
+            if (!Boolean(obj[key])) {
+                delete obj[key];
+            }
+            else if (typeof obj[key] === "object") {
+                obj[key] = compactObject(obj[key]);
             }
         }
+        return obj;
     }
-    return result
 };
