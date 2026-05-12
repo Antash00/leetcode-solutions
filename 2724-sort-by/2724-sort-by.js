@@ -4,10 +4,7 @@
  * @return {Array}
  */
 var sortBy = function(arr, fn) {
-    return [...arr].sort((a, b) => {
-    const valA = fn(a);
-    const valB = fn(b);
-    
-    return valA - valB;
-  });
+    return arr.sort((a, b) => {
+        return fn(a) - fn(b);
+    });
 };
