@@ -5,7 +5,7 @@
  * @return {number}
  */
 var champagneTower = function (poured, query_row, query_glass) {
-    const champTower = Array.from({ length: 101 }, () => Array(101).fill(0))
+    const champTower = Array.from({ length: query_row + 1 }, () => Array(query_row + 1).fill(0))
     if (poured === 0) {
         return 0
     }
