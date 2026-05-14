@@ -3,11 +3,12 @@
  * @return {number}
  */
 var repeatedNTimes = function (nums) {
-    const hash = new Map()
-    for (let i in nums) {
-        if (hash.has(nums[i])) {
-            return nums[i]
+    const hash = new Set();
+    for (let num of nums) {
+        if (hash.has(num)) {
+            return num
         }
-        hash.set(nums[i])
+        hash.add(num)
     }
+    return false
 };
